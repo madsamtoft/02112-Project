@@ -10,7 +10,7 @@
     "idf.openOcdConfigs": [
         "board/esp32c3-bridge.cfg"
     ],
-    "idf.port": "/dev/cu.usbserial-1140",
+    "idf.port": "/dev/cu.usbserial-120",
     "idf.pythonBinPath": "/Users/mads/.espressif/python_env/idf5.1_py3.11_env/bin/python",
     "idf.toolsPath": "/Users/mads/.espressif",
     "idf.flashType": "UART"

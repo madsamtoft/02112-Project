@@ -1,7 +1,7 @@
 {
     "version":            "1",
     "project_name":       "High-resolution_timer",
-    "project_version":    "3d0023e4-dirty",
+    "project_version":    "9dd9f997-dirty",
     "project_path":       "/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/High-resolution_timer",
     "idf_path":           "/Users/mads/esp/esp-idf",
     "build_dir":          "/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/High-resolution_timer/build",
