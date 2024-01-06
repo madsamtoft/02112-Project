@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/CMakeFiles/bootloader
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/CMakeFiles/bootloader.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/CMakeFiles/bootloader-complete.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/Users/mads/Desktop/Git/02112/Exercises/Exercise11-Timers/Blink_LED/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
