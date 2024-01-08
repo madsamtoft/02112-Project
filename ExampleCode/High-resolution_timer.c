@@ -7,33 +7,33 @@
 #include "esp_timer.h"
 #include "sdkconfig.h"
 
-static const char *TAG = "";
-
-void primeFactor(long long num);
-
-void app_main(void) {
-    int64_t tS = esp_timer_get_time(); 
-
-    primeFactor(9223372036854775807);
-
-    int64_t tE = esp_timer_get_time();
-
-    int64_t diff = tE - tS;
-
-    ESP_LOGI(TAG, "Elapsed time: %llu microseconds", (long long) diff);
-}
-
-void primeFactor(long long num) {
-    ESP_LOGI(TAG, "PrimeFactors of %llu", num);
+// Prime Factor function which can take a long time depending on input
+void primeFactor(long long num) { 
+    printf("\nPrimeFactors of %llu: ", num);
     long long i = 2;
-
-    while (i <= sqrt(num)){
+    long long squareRoot = sqrt(num); // Predefining for efficiency
+    while (i <= squareRoot){
         if(num % i == 0) {
             num /= i;
-            ESP_LOGI(TAG, "%llu is a factor", i);
+            squareRoot = sqrt(num);
+            printf("%llu, ", i);
         } else {
             i++;
         }
     }
-    ESP_LOGI(TAG, "%llu is a factor", num);
+    printf("%llu\n", num);
 }
+
+void app_main(void) {
+    int64_t tS = esp_timer_get_time(); // Timestamp 1
+
+    primeFactor(9223372036854775807);
+
+    int64_t tE = esp_timer_get_time(); // Timestamp 2
+
+    int64_t diff = tE - tS; // Time taken to execute a function
+
+    printf("Elapsed time: %llu microseconds\n\n", (long long) diff);
+}
+
+

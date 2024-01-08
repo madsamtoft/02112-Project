@@ -9,19 +9,17 @@
 #include "sdkconfig.h"
 
 #define LED_GPIO 1 // Definition for GPIO port
-#define DELAY(s) s * 1000 / portTICK_PERIOD_MS
-
-static const char *TAG = "";
+#define DELAY(s) s * 1000 / portTICK_PERIOD_MS // Delay in seconds
 
 void app_main(void) {
-    const double s = 1; // Choose delay in seconds
+    const double s = 0.5; // Choose delay in seconds
     int level = 0; // Set HIGH/LOW
     gpio_set_direction(LED_GPIO, GPIO_MODE_OUTPUT);
 
     while(1) {
         gpio_set_level(LED_GPIO, level);
-        vTaskDelay(DELAY(s)/2.);
-        level = !level;
-        ESP_LOGI(TAG, "LED is %s", level ? "ON" : "OFF");
+        vTaskDelay(DELAY(s));
+        level = !level; // Toggle LED
+        printf("LED is %s \n", level ? "ON" : "OFF"); // Print LED status
     }
 }
