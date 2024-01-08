@@ -12,7 +12,6 @@ both in the terminal and with the board. */
 #include "driver/gpio.h"
 #include "esp_log.h"
 #include "esp_timer.h"
-//#include "sdkconfig.h"
 
 #define LED_GPIO GPIO_NUM_1 // Definition for GPIO port
 #define DELAY(s) s * 1000 / portTICK_PERIOD_MS // Delay in seconds
