@@ -16,6 +16,8 @@
 #define I2C_MASTER_SCL_GPIO 3
 #define I2C_NUM 0
 
+#define DELAY(ms) ms / portTICK_PERIOD_MS
+
 void temperaure_humidity_demo() {
     i2c_dev_t dev = {0};
 
@@ -33,7 +35,7 @@ void temperaure_humidity_demo() {
             printf("Error reading data: %d (%s)\n", res, esp_err_to_name(res));
 
         //1000 ms delay
-        vTaskDelay((1000) / portTICK_PERIOD_MS);
+        vTaskDelay(DELAY(1000));
     }
 }
 
@@ -52,6 +54,7 @@ void ic2Config() {
 
 void app_main(void) {
     ic2Config();
+    
 
     printf("\nRunning temperature/humidity sensor:\n");
     while (1) {
