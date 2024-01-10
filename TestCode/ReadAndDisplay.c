@@ -74,6 +74,13 @@ void initDisplay(SSD1306_t *dev) {
     printf("Screen height: %d\n", ssd1306_get_height(dev));
 
     ssd1306_clear_screen(dev, false);
+
+    ssd1306_contrast(dev, 0xff);
+
+    ssd1306_display_text(dev, 0, "Line 1", 6, false); // Change these lines when making multiple pages
+    ssd1306_display_text(dev, 1, "Line 2", 6, false); //
+    ssd1306_display_text(dev, 2, "Temperature", 12, false); //
+    ssd1306_display_text(dev, 5, "Humidity", 9, false); //
 }
 
 void updateAir(info *air) {
@@ -128,24 +135,17 @@ void printInfo(info *info) {
 }
 
 void displayInfo(SSD1306_t *dev, info *info) {
-    ssd1306_clear_screen(dev, false);
-    ssd1306_contrast(dev, 0xff);
-    ssd1306_display_text(dev, 0, "Line 1", 6, false);
-    ssd1306_display_text(dev, 1, "Line 2", 6, false);
-
     char airTemp[17];
-    char airHumidity[17];
     char soilTemp[17];
+    char airHumidity[17];
     char soilHumidity[17];
     sprintf(airTemp, "Air: %10.1fC", info -> airTmp);
     sprintf(soilTemp, "Soil: %9.1fC", info -> soilTmp);
     sprintf(airHumidity, "Air: %10.1f%%", info -> airHum);
     sprintf(soilHumidity, "Soil: %10d", info -> soilHum);
 
-    ssd1306_display_text(dev, 2, "Temperature", 12, false);
     ssd1306_display_text(dev, 3, airTemp, 16, false);
     ssd1306_display_text(dev, 4, soilTemp, 16, false);
-    ssd1306_display_text(dev, 5, "Humidity", 9, false);
     ssd1306_display_text(dev, 6, airHumidity, 16, false);
     ssd1306_display_text(dev, 7, soilHumidity, 16, false);
 }
@@ -164,6 +164,6 @@ void app_main(void) {
         updateInfo(&info);
         printInfo(&info);
         displayInfo(&dev, &info);
-        vTaskDelay(DELAY(5000));
+        vTaskDelay(DELAY(1000));
     }
 }
