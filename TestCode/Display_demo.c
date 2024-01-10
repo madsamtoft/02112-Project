@@ -1,27 +1,13 @@
-/*
- * A components demo for course 02112
- */
-
 #include <stdio.h>
-#include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "esp_chip_info.h"
-#include "esp_flash.h"
-#include <string.h>
-#include "esp_log.h"
 
 //Driver libraries
 #include "driver/i2c.h"
-#include "driver/ledc.h"
-#include "driver/gpio.h"
-#include "driver/adc.h"
 
 //Display libraies
 #include "ssd1306.h"
-#include "font8x8_basic.h"
-
-#define tag "EXAMPLE_ALL"
+//#include "font8x8_basic.h"
 
 #define I2C_MASTER_FREQ_HZ 75000 //Reduce it to 50000 if the temperature/umidity sensor fails
 #define I2C_MASTER_TX_BUF_DISABLE 0
@@ -30,24 +16,18 @@
 #define I2C_MASTER_SCL_GPIO 3
 #define I2C_NUM 0
 
-// #define DELAY(s) s * 1000 / portTICK_PERIOD_MS
-
 
 void initDisplay(SSD1306_t *dev) {
-    ESP_LOGI("initDisplay", "Initializing the display");
-
     i2c_master_shared_i2c_init(dev);
     ssd1306_init(dev, 128, 64);
     printf("Screen width: %d\n", ssd1306_get_width(dev));
     printf("Screen height: %d\n", ssd1306_get_height(dev));
 
     ssd1306_clear_screen(dev, false);
-    ESP_LOGI("initDisplay", "Initialization finished");
 }
 
 
 void displayInfo(SSD1306_t *dev) {
-    ESP_LOGI(tag, "Printing the current info to screen");
     ssd1306_clear_screen(dev, false);
     ssd1306_contrast(dev, 0xff);
     ssd1306_display_text(dev, 0, "Line 1", 6, false);
@@ -71,13 +51,7 @@ void displayInfo(SSD1306_t *dev) {
 }
 
 
-void app_main(void)
-{
-    printf("Display demo:\n");
-
-    //Initialize common I2C port for display, soil sensor, and temperature/umidity sensor
-    //Initialized it as follows only once here in the main, then use the shared_init 
-    //functions for the different components as shown in this demo (see _demo functions).
+void app_main(void) {
     i2c_config_t conf;
     conf.mode = I2C_MODE_MASTER;
     conf.sda_io_num = I2C_MASTER_SDA_GPIO;
@@ -89,15 +63,7 @@ void app_main(void)
     i2c_param_config(I2C_NUM, &conf);
     ESP_ERROR_CHECK(i2c_driver_install(I2C_NUM, conf.mode, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0));
 
-    printf("\nRunning display demo (look at the display!):\n");
     SSD1306_t dev;
     initDisplay(&dev);
     displayInfo(&dev);
-
-    printf("\nThe demos are finished. Prees the reset button if you want to restart.\n");
-    printf("Use the code in the demo in your own software. Goodbye!\n");
-    fflush(stdout);
-
-    //This would automatically restart the ESP32
-    //esp_restart();
 }
