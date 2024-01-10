@@ -1,23 +1,13 @@
-/*
- * A components demo for course 02112
- */
-
 #include <stdio.h>
 #include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "esp_flash.h"
-#include <string.h>
-#include "esp_log.h"
 
 //Driver libraries
 #include "driver/i2c.h"
-#include "driver/gpio.h"
 
 //Temperature/humidity sensor library
 #include <am2320.h>
-
-#define tag "EXAMPLE_ALL"
 
 #define I2C_MASTER_FREQ_HZ 75000 //Reduce it to 50000 if the temperature/umidity sensor fails
 #define I2C_MASTER_TX_BUF_DISABLE 0
