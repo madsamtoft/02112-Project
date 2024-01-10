@@ -77,10 +77,10 @@ void initDisplay(SSD1306_t *dev) {
 
     ssd1306_contrast(dev, 0xff);
 
-    ssd1306_display_text(dev, 0, "Line 1", 6, false); // Change these lines when making multiple pages
-    ssd1306_display_text(dev, 1, "Line 2", 6, false); //
-    ssd1306_display_text(dev, 2, "Temperature", 12, false); //
-    ssd1306_display_text(dev, 5, "Humidity", 9, false); //
+    // ssd1306_display_text(dev, 0, "Line 1", 6, false); // Change these lines when making multiple pages
+    // ssd1306_display_text(dev, 1, "Line 2", 6, false); //
+    // ssd1306_display_text(dev, 2, "Temperature", 12, false); //
+    // ssd1306_display_text(dev, 5, "Humidity", 9, false); //
 }
 
 void updateAir(info *air) {
@@ -135,6 +135,11 @@ void printInfo(info *info) {
 }
 
 void displayInfo(SSD1306_t *dev, info *info) {
+    // ssd1306_clear_screen(dev, false);
+    // ssd1306_contrast(dev, 0xff);
+    // ssd1306_display_text(dev, 0, "Line 1", 6, false);
+    // ssd1306_display_text(dev, 1, "Line 2", 6, false);
+
     char airTemp[17];
     char soilTemp[17];
     char airHumidity[17];
@@ -144,8 +149,10 @@ void displayInfo(SSD1306_t *dev, info *info) {
     sprintf(airHumidity, "Air: %10.1f%%", info -> airHum);
     sprintf(soilHumidity, "Soil: %10d", info -> soilHum);
 
+    ssd1306_display_text(dev, 2, "Temperature", 12, false);
     ssd1306_display_text(dev, 3, airTemp, 16, false);
     ssd1306_display_text(dev, 4, soilTemp, 16, false);
+    ssd1306_display_text(dev, 5, "Humidity", 9, false);
     ssd1306_display_text(dev, 6, airHumidity, 16, false);
     ssd1306_display_text(dev, 7, soilHumidity, 16, false);
 }
