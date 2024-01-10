@@ -1,23 +1,12 @@
-/* 
-    Demo project for buzzer;
-    Det er ikke vist hvilke includes der er nødvendige her. 
- */
 #include <stdio.h>
 #include <math.h>
-#include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "esp_chip_info.h"
-#include "esp_flash.h"
-#include <string.h>
-#include "esp_log.h"
 
-//Driver libraries
-#include "driver/i2c.h"
+// Driver libraries
 #include "driver/ledc.h"
-#include "driver/gpio.h"
-#include "driver/adc.h"
 
+// GPIO for the buzzer
 #define BUZZ_TIMER              LEDC_TIMER_1
 #define BUZZ_MODE               LEDC_LOW_SPEED_MODE
 #define BUZZ_OUTPUT_IO          (9) // Define the output GPIO for red
@@ -26,7 +15,9 @@
 #define BUZZ_DUTY               (4096) // Set duty to 50%. (2 ** 13) * 50% = 4096
 #define BUZZ_FREQUENCY          (1000) // Frequency in Hertz. Set frequency at 1 kHz
 
-//Defines for notes. Made by Sebastian
+#define DELAY(ms) (ms) / portTICK_PERIOD_MS
+
+// Defines for notes
 #define C 16.352
 #define D 18.354
 #define DS 19.445
@@ -55,12 +46,12 @@ void play_tone(int freq_hz, int time_ms) {
     if (freq_hz != 0) {
         set_buzzer_volume(0.5);
         ESP_ERROR_CHECK(ledc_set_freq(BUZZ_MODE, BUZZ_TIMER, freq_hz));
-        vTaskDelay((time_ms - 10) / portTICK_PERIOD_MS);
+        vTaskDelay(DELAY(time_ms - 10));
         set_buzzer_volume(0);
-        vTaskDelay((10) / portTICK_PERIOD_MS);
+        vTaskDelay(DELAY(10));
     } else {
         set_buzzer_volume(0);
-        vTaskDelay((time_ms) / portTICK_PERIOD_MS);
+        vTaskDelay(DELAY(time_ms));
     }
 }
 
@@ -144,7 +135,7 @@ void app_main(void)
     printf("\nError:\n");
     melody_error();
 
-    vTaskDelay((500) / portTICK_PERIOD_MS);
+    vTaskDelay(DELAY(500));
 
     //FIRST
     printf("\nRunning the load demo:\n");
