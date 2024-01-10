@@ -51,7 +51,8 @@ void displayInfo(SSD1306_t *dev) {
 }
 
 
-void app_main(void) {
+void app_main(void)
+{
     i2c_config_t conf;
     conf.mode = I2C_MODE_MASTER;
     conf.sda_io_num = I2C_MASTER_SDA_GPIO;
