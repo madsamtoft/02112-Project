@@ -16,7 +16,7 @@
 #define I2C_MASTER_SCL_GPIO 3
 #define I2C_NUM 0
 
-void temperaure_humidity_demo(){
+void temperaure_humidity_demo() {
     i2c_dev_t dev = {0};
 
     //Initialize the sensor (shared i2c) only once after boot.

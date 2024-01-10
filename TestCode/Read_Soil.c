@@ -2,14 +2,9 @@
 #include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-// #include "esp_chip_info.h"
-// #include "esp_flash.h"
-// #include <string.h>
-// #include "esp_log.h"
 
 //Driver libraries
 #include "driver/i2c.h"
-#include "driver/gpio.h"
 
 //Stemma soil sensor library
 #include "Adafruit_Stemma_soil_sensor.h"
@@ -23,7 +18,7 @@
 
 #define DELAY(ms) ms / portTICK_PERIOD_MS
 
-void stemma_soil_demo(){
+void stemma_soil_demo() {
     int ret_moist = ESP_OK;
     int ret_temp = ESP_OK;
     uint16_t moisture_value = 0;
