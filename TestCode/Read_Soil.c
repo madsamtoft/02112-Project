@@ -2,10 +2,10 @@
 #include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "esp_chip_info.h"
-#include "esp_flash.h"
-#include <string.h>
-#include "esp_log.h"
+// #include "esp_chip_info.h"
+// #include "esp_flash.h"
+// #include <string.h>
+// #include "esp_log.h"
 
 //Driver libraries
 #include "driver/i2c.h"
