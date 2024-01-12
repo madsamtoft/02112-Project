@@ -1,0 +1,8 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/mads/Desktop/Git/02112-Project/TestCode/pcTest/test'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _createInfo, symObjAddr: 0x0, symBinAddr: 0x100003E04, symSize: 0x6C }
+  - { offsetInCU: 0xA5, offset: 0xA5, size: 0x8, addend: 0x0, symName: _createInfo, symObjAddr: 0x0, symBinAddr: 0x100003E04, symSize: 0x6C }
+  - { offsetInCU: 0xDB, offset: 0xDB, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x6C, symBinAddr: 0x100003E70, symSize: 0xE0 }
+...
