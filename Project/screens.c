@@ -15,11 +15,11 @@ void displayMenu(SSD1306_t *dev, int select) { // Method to display the menu
 }
 
 void displayMenuAverage(SSD1306_t *dev, int select) {
-    ssd1306_display_text(dev, 1, "Get average values over:", 5, false);
-    ssd1306_display_text(dev, 2, "5 minutes", 8, (select == 0));
-    ssd1306_display_text(dev, 3, "30 minutes", 11, (select == 1));
-    ssd1306_display_text(dev, 4, "1 hour", 11, (select == 2));
-    ssd1306_display_text(dev, 5, "2 hours", 10, (select == 3));
+    ssd1306_display_text(dev, 1, "Get avg. over:", 14, false);
+    ssd1306_display_text(dev, 2, "-5 minutes", 10, (select == 0));
+    ssd1306_display_text(dev, 3, "-30 minutes", 11, (select == 1));
+    ssd1306_display_text(dev, 4, "-1 hour", 7, (select == 2));
+    ssd1306_display_text(dev, 5, "-2 hours", 8, (select == 3));
 }
 
 void displayInfo(SSD1306_t *dev, Info *info) { // Method to display current info values
@@ -64,7 +64,6 @@ void averageSelect(SSD1306_t *dev) {
                 periodicRead(dev, 7200);
                 return;
             }
-            
         }
         if (gpio_get_level(GPIO_BTN_SELECT) == 0) {
             select++;
@@ -83,7 +82,7 @@ void menuSelect(SSD1306_t *dev) {
             if (select == 0) {
                 return;
             } else if (select == 1) {
-                displayMenuAverage(dev);
+                averageSelect(dev);
                 return;
             } else if (select == 2) {
                 return;

@@ -55,5 +55,6 @@ void periodicRead(SSD1306_t *dev, int time) { // Read and get average over a per
         vTaskDelay(DELAY(735)); // The time it takes to execute one iteration is 265ms
     }
     printData(data, time);
+    free(data); // Maybe needs to be moved if we want to use the array more
 }
 
